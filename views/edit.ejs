@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs') %>
+<h1 class="text-center">EDIT USER </h1>
+    <%- include('../partials/navbar.ejs') %>
+
+    <div class="container mt-5">
+        <table class="table table-striped table-dark text-center table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">AGE</th>
+                <th scope="col">PHONE</th>
+                <th scope="col">SCORE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.forEach(user => {   %>
+              <tr>
+                  <form action="/edit/:id" method="post">
+                    <th><input type="text" class="text-center " name="id" value=<%= user.id%>  readonly></th>
+                    <td><input type="text" class="text-center " name="name" value=<%= user.name%>   id="validationDefaultUsername"  required> </td>
+                    <td><input type="text" class="text-center "name="age" value=<%= user.age%>   min="7" max="100"  id="validationDefaultUsername"  required></td>
+                    <td><input type="text" class="text-center "name="phone" value=<%= user.phone %> min="11" max="11"  id="validationDefaultUsername"  required></td>
+                    <td><input type="text" class="text-center "name="score" value=<%= user.score %> min="0" max="100" placeholder=" "  ></td>
+              </tr>
+           
+             <% }); %> 
+            </tbody>
+          </table>
+
+          <div>
+            <button class="btn mt-5 bg-dark text-light" name="submit" type="submit">Save Changes</button>
+        </div>
+      </form>  
+    </div>
+  
+
+ <%- include('../partials/footer.ejs') %>
